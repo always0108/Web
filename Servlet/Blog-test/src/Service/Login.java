@@ -17,7 +17,9 @@ public class Login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         if (checkLogin(username, password)) {
-            request.getRequestDispatcher(SUCCESS_VIEW).forward(request, response);
+            //request.getRequestDispatcher(SUCCESS_VIEW).forward(request, response);
+            request.getSession().setAttribute("login",username);
+            response.sendRedirect(SUCCESS_VIEW);
         } else {
             response.sendRedirect(ERROR_VIEW);
         }

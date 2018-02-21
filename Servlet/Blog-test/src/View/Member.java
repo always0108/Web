@@ -49,9 +49,12 @@ public class Member extends HttpServlet {
 
         Map<Date,String> messages = readMessage(username);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss E");
+        out.println("<h3>动态</h3> <hr>");
         for(Date date:messages.keySet()){
             out.println("<tr><td style='vertical-align: top;'>");
-            out.println(username+"<br>");
+            out.println("<span style='color: red" +
+                    "'>"+
+                    username+"</span> <br>");
             out.println(messages.get(date)+"<br>");
             out.println(df.format(date));
             out.println("<a href='delete.do?message="+date.getTime()

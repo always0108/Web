@@ -54,7 +54,7 @@ public class Register extends HttpServlet {
 
     private boolean isInvalidUsername(String username){
         for(String file:new File(USERS).list()){
-            if(file.equals("username")){
+            if(file.equals(username)){
                 return true;
             }
         }

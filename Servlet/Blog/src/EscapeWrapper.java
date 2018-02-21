@@ -1,8 +1,10 @@
 import org.apache.commons.lang3.StringEscapeUtils;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 public class EscapeWrapper extends HttpServletRequestWrapper{
-    public EscapeWrapper(HttpServletRequestWrapper request){
+    public EscapeWrapper(HttpServletRequest request){
         super(request);
     }
 

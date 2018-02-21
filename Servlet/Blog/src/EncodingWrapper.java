@@ -1,10 +1,11 @@
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
-import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 
 public class EncodingWrapper extends HttpServletRequestWrapper{
+
     private String ENCODING;
+
     public EncodingWrapper(HttpServletRequest request, String ENCODING){
         super(request);
         this.ENCODING = ENCODING;

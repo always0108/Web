@@ -3,7 +3,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@WebFilter("/*")
+@WebFilter(
+        filterName = "EscapeFilter",
+        urlPatterns = {"/*"})
 public class EscapeFilter implements Filter{
 
     public void init(FilterConfig fConfig) throws ServletException{}

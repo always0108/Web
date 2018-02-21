@@ -6,7 +6,7 @@
 
     <context-param>
         <param-name>USERS</param-name>
-        <param-value>/home/limeng/git/Web/Servlet/Blog-test/Data</param-value>
+        <param-value>/home/limeng/git/Web/Servlet/Blog/USERS</param-value>
     </context-param>
 
 </web-app>

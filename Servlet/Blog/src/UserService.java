@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class UserService {
+
     private String USERS;
 
     public  UserService(String USERS){
@@ -14,7 +15,7 @@ public class UserService {
     //判断用户名是否合法
     public boolean isInvalidUsername(String username){
         for(String file:new File(USERS).list()){
-            if(file.equals("username")){
+            if(file.equals(username)){
                 return true;
             }
         }
@@ -29,6 +30,23 @@ public class UserService {
         BufferedWriter writer = new BufferedWriter(new FileWriter(userhome+"/profile"));
         writer.write(email + "\t" + password);
         writer.close();
+    }
+
+    //检查登录口令
+    public boolean checkLogin(String username,String password) throws IOException{
+        if(username!=null && password != null){
+            for(String file : new File(USERS).list()){
+                if(file.equals(username)){
+                    BufferedReader reader = new BufferedReader
+                            (new FileReader(USERS+"/"+file+"/profile"));
+                    String passwd = reader.readLine().split("\t")[1];
+                    if (passwd.equals(password)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     //过滤.txt文件名

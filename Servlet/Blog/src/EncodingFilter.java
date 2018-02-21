@@ -5,8 +5,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @WebFilter(
+        filterName = "EncodingFilter" ,
         urlPatterns = {"/*"},
-        initParams = {@WebInitParam(name = "ENCODING",value = "UTF-8")
+        initParams = {
+                @WebInitParam(name = "ENCODING",value = "UTF-8")
         }
 )
 public class EncodingFilter implements Filter{

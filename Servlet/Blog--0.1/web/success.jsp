@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta content='text/html;charset=UTF-8' http-equiv='content-type'>
-    <title>新增会员失败</title>
+    <title>新增会员成功</title>
 </head>
 
 <body>

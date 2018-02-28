@@ -50,6 +50,15 @@ public class UserService {
         return false;
     }
 
+    public boolean isUserExisted(String username){
+        for(String file:new File(USERS).list()){
+            if(file.equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     //过滤.txt文件名
     private class TxtFilenameFilter implements FilenameFilter {
         @Override

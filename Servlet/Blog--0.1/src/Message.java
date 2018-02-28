@@ -24,7 +24,7 @@ public class Message extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        MEMBER_VIEW = getServletConfig().getInitParameter("SUCCESS_VIEW");
+        MEMBER_VIEW = getServletConfig().getInitParameter("MEMBER_VIEW");
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,3 +1,4 @@
+import model.Blah;
 import model.UserService;
 
 import javax.servlet.ServletException;
@@ -7,12 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(
         name = "Login",
         urlPatterns = {"/login.do"},
         initParams = {
-                @WebInitParam(name = "SUCCESS_VIEW",value = "member.view"),
+                @WebInitParam(name = "SUCCESS_VIEW",value = "member.jsp"),
                 @WebInitParam(name = "ERROR_VIEW",value = "index.jsp")
         }
     )
@@ -34,13 +36,21 @@ public class Login extends HttpServlet {
 
         UserService userService = (UserService)getServletContext().getAttribute("userService");
 
+        String resultpage;
         if (userService.checkLogin(username, password)) {
-            //request.getRequestDispatcher(SUCCESS_VIEW).forward(request, response);
             request.getSession().setAttribute("login",username);
-            response.sendRedirect(SUCCESS_VIEW);
+            resultpage = SUCCESS_VIEW;
+            //登录成功读取自己的动态
+            Blah blah = new Blah();
+            blah.setUsername(username);
+
+            List<Blah> blahs = userService.getBlahs(blah);
+            request.setAttribute("blahs", blahs);
         } else {
-            response.sendRedirect(ERROR_VIEW);
+            request.setAttribute("error","名称或者密码错误");
+            resultpage = ERROR_VIEW;
         }
+        request.getRequestDispatcher(resultpage).forward(request, response);
     }
 
 }

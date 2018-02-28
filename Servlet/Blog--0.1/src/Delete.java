@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 @WebServlet(
         name = "Delete",
@@ -41,6 +42,9 @@ public class Delete extends HttpServlet {
         blah.setUsername(username);
         blah.setDate(new Date(Long.parseLong(message)));
         userService.deleteBlah(blah);
-        response.sendRedirect(SUCCESS_VIEW);
+
+        List<Blah> blahs = userService.getBlahs(blah);
+        request.setAttribute("blahs", blahs);
+        request.getRequestDispatcher(SUCCESS_VIEW).forward(request, response);
     }
 }

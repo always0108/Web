@@ -9,7 +9,7 @@
 <html>
 <head>
   <meta content='text/html;charset=UTF-8' http-equiv='content-type'>
-  <title>Blog-test</title>
+  <title>上古微博</title>
   <style type="text/css">
     span{
       float: left;
@@ -23,9 +23,11 @@
 <h1>欢迎来到上古微博</h1>
 <form method="post" action="login.do">
   <div>
-    <span>用户名：</span><input type="text" name="username" size="25" maxlength="16"> <br>
+    <div style="color: red",>${requestScope.error}</div>
+    <span>用户名：</span><input type="text" name="username" value="${param.username}" size="25" maxlength="16"> <br>
     <span>密码&emsp;：</span> <input type="password" name="password" size="25" maxlength="16">  <br> <br>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="submit" value="登录" name="login">
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    <input type="submit" value="登录" name="login">
     &emsp;&emsp;&emsp;&emsp; <a href="register.jsp">注册</a>  <br>
     <br>
   </div>

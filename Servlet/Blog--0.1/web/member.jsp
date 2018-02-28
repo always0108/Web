@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.List" %>
-<%@ page import="model.Blah" %>>
+<%@ page import="model.Blah" %>
 <%
     String username = (String)request.getSession().getAttribute("login");
 %>
@@ -21,14 +21,15 @@
 <body>
     <h1>会员 <%=username%>，欢迎登录！ </h1>
     <a href='logout.do?username=${sessionScope.login}'>注销${sessionScope.login} </a> <br> <br>
+
     <div>
         <form method='post' action='message.do'>
             分享新鲜事...<br>
             <%
             String blabla = request.getParameter("blabla");
-            if(blabla==null){
+            if(blabla == null){
                 blabla="";
-            }else{
+            }else if(blabla.length() >= 140){
             %>
                 <span style='color: red'>信息要在140字内</span><br>
             <%
@@ -39,6 +40,14 @@
         </form>
     </div>
 
+    <div>
+        <form method='post' action='user.do'>
+            查看其他用户的主页：<input type="text" name="user" maxlength="20">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type='submit' value='查询' name='send'> <br> <br>
+        </form>
+    </div>
+
     <%
         List<Blah> blahs = (List<Blah>)request.getAttribute("blahs");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss E");
@@ -46,19 +55,22 @@
     <h3>动态</h3>
     <hr>
     <%
-        for(Blah blah:blahs){
+        if (blahs != null){
+            for(Blah blah: blahs){
     %>
+    <table>
     <tr>
         <td style='vertical-align: top;'>
-            <span style='color: red'>
-                <%=blah.getUsername()%></span> <br>
+            <span style='color:goldenrod'> <%=blah.getUsername()%></span> <br>
                 <%=blah.getTxt()%><br>
                 <%=df.format(blah.getDate())%>
-            <a href='delete.do?message="<%=blah.getDate().getTime()%>'>删除</a>
-            <hr>
+            <a href='delete.do?message=<%=blah.getDate().getTime()%>'>删除</a>
         </td>
     </tr>
+    </table>
+    <hr>
     <%
+            }
         }
     %>
 </body>

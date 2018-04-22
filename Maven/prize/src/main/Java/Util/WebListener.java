@@ -17,12 +17,15 @@ public class WebListener implements ServletContextListener {
         String password = sce.getServletContext().getInitParameter("password");
         //连接数据库
         DBConnection dbConnection = DBConnection.getInstance();
-        dbConnection.startConnect(driver,url,username,password);
+        dbConnection.init(driver,url,username,password);
+        dbConnection.startConnect();
         dbConnection.SQLexecte("CREATE TABLE IF NOT EXISTS prizelist select * from number");
+        dbConnection.stopConnect();
     }
 
     public void contextDestroyed(ServletContextEvent sce) {
         DBConnection dbConnection = DBConnection.getInstance();
+        dbConnection.startConnect();
         dbConnection.SQLexecte("DROP TABLE IF EXISTS prizelist");
         dbConnection.stopConnect();
     }

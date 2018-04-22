@@ -15,7 +15,9 @@
   String finalname = "";
 
   DBConnection dbConnection = DBConnection.getInstance();
+  dbConnection.startConnect();
   Connection conn = dbConnection.getConn();
+
 
   PreparedStatement pstmt = null;
   try {
@@ -46,13 +48,28 @@
   }
   finally {
     pstmt.close();
+    dbConnection.stopConnect();
   }
 %>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>抽奖</title>
-  <link rel="stylesheet" type="text/css" href="css/reset.css" rel="external nofollow" />
+  <style type="text/css">
+    .but{
+      width: 120px;
+      height: 50px;
+      font-size: 20px;
+      font-weight: 600;
+      color: white;
+      padding:4px;
+      background-color: mediumslateblue;
+      border: 1px;
+      border-radius: 20px;
+      text-align: center;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 
 <body background="background.jpg" style="background-size: 100% 100%">
@@ -69,7 +86,7 @@
 <div style="text-align: center;margin-top: 3%" >
   <form>
     <input id="note" type="text" style= "background:transparent;border-style:none;text-align: center;font-size: 2em"> <br> <br>
-    <input id="but" type="submit" style="width: 100px;height: 40px;size: 3em" value="继续抽奖">
+    <input id="but" class="but" type="submit" value="继续抽奖">
     <input id="result" type="hidden" value=<%=finalnum%>>
     <input id="name" type="hidden" value=<%=finalname%>>
   </form>

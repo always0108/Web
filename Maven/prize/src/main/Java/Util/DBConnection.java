@@ -6,6 +6,10 @@ import java.util.Properties;
 
 public class DBConnection {
     private static DBConnection dbConnection = null;
+    private String driver;
+    private String url;
+    private String username;
+    private String password;
 
     private Connection conn = null;
 
@@ -22,13 +26,22 @@ public class DBConnection {
         return dbConnection;
     }
 
-    public void startConnect(String driver,String url,String username,String password){
+    public void init(String driver,String url,String username,String password)
+    {
+        this.driver = driver;
+        this.url = url;
+        this.username = username;
+        this.password = password;
+    }
+
+    public void startConnect(){
         if(conn == null){
             String add = "?useUnicode=true&characterEncoding=utf-8&useSSL=false";
+
             synchronized (DBConnection.class){
                 try {
                     Class.forName(driver);
-                    conn = DriverManager.getConnection(url,
+                    conn = DriverManager.getConnection(url+add,
                             username, password);
                     System.out.println("MySQL connection sucessfully!");
                 } catch (SQLException e){

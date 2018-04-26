@@ -73,7 +73,7 @@
 </head>
 
 <body background="background.jpg" style="background-size: 100% 100%">
-<div id="onclick" style="text-align: center;margin-top: 10%">
+<div id="onclick" style="text-align: center;margin-top: 8%">
   <img src="img/0.png"/>
   <img src="img/0.png"/>
   <img src="img/0.png"/>
@@ -83,7 +83,7 @@
   <img src="img/0.png"/>
   <img src="img/0.png"/>
 </div>
-<div style="text-align: center;margin-top: 3%" >
+<div style="text-align: center;margin-top: 5%" >
   <form>
     <input id="note" type="text" style= "background:transparent;border-style:none;text-align: center;font-size: 2em"> <br> <br>
     <input id="but" class="but" type="submit" value="继续抽奖">

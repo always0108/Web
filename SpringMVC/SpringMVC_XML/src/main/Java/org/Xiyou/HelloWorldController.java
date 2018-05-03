@@ -12,7 +12,7 @@ public class HelloWorldController {
 
         model.addAttribute("greeting", "Hello Spring MVC, I am so tired to do this !");
 
-        return "helloworld";
+        return "helloworld";//标示用于渲染输出的视图名
 
     }
 

@@ -9,7 +9,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@EnableWebMvc
 @ComponentScan(basePackages = "XiyouLinux")
 
 public class configuration extends WebMvcConfigurationSupport{
@@ -25,18 +24,13 @@ public class configuration extends WebMvcConfigurationSupport{
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry)
     {
-        registry.addResourceHandler("/resources/").addResourceLocations("/resources/**");
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        //super.addResourceHandlers(registry);
     }
 
-    @Override
+    /*@Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer)
     {
         configurer.enable();
-    }
-
-
-
-
-
-
+    }*/
 }

@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <audio src="Summer.mp3" autoplay="autoplay" loop="loop"></audio>
   </head>
-  <body>
-  $END$
+  <body background="background2.jpg">
+    <a href="lesson.png.zip"></a>
   </body>
 </html>

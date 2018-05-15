@@ -45,10 +45,9 @@
         }
     }else{
 %>
-        <h1 style="color: red">${requestScope.username}用户不存在</h1>
+        <h1 style="color: red">$用户{requestScope.username}不存在</h1>
 <%
     }
-    String username = (String)request.getSession().getAttribute("login");
 %>
 </body>
 </html>

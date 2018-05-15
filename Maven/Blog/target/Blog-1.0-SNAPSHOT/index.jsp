@@ -11,26 +11,34 @@
   <meta content='text/html;charset=UTF-8' http-equiv='content-type'>
   <title>上古微博</title>
   <style type="text/css">
-    span{
-      float: left;
-      width:80px;
-      height: 25px;
-    }
   </style>
 </head>
 
-<body>
-<h1>欢迎来到上古微博</h1>
-<form method="post" action="login.do">
-  <div>
-    <div style="color: red",>${requestScope.error}</div>
-    <span>用户名：</span><input type="text" name="username" value="${param.username}" size="25" maxlength="16"> <br>
-    <span>密码&emsp;：</span> <input type="password" name="password" size="25" maxlength="16">  <br> <br>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-    <input type="submit" value="登录" name="login">
-    &emsp;&emsp;&emsp;&emsp; <a href="register.jsp">注册</a>  <br>
-    <br>
-  </div>
-</form>
+<body background="smallbackgroud.jpg" style="background-size: cover;background-repeat: no-repeat;background-attachment: fixed">
+  <h1 style="color: white;text-align: center;margin-top: 10%;font-size: 4rem">上古微博</h1>
+  <form method="post" action="login.do">
+      <div style="color: red;text-align: center">${requestScope.error}</div>
+      <div style="margin: auto">
+        <table align="center" style="text-align: left;height: 30%">
+        <tr>
+          <td style="color: white;font-size: 1.5rem">用户名：</td>          <td><input type="text" name="username" value="${param.username}"></td>
+        </tr>
+        <tr>
+          <td style="color: white;font-size: 1.5rem">密码：</td>
+          <td><input type="password" name="password"></td>
+        </tr>
+
+        <tr></tr>
+
+        <tr>
+          <td></td>
+          <td ><input type="submit" value="登录" name="login" style="width: 45%;height: 50%"></td>
+          <td><a href="register.jsp" style="width: 45%;height: 50%">注册</a></td>
+        </tr>
+
+        </table>
+      </div>
+  </form>
+
 </body>
 </html>

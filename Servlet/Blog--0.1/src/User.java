@@ -17,6 +17,7 @@ import java.util.List;
         initParams = {
                 @WebInitParam(name = "USER_VIEW",value = "/user.jsp") }
 )
+
 public class User extends HttpServlet {
     private String USER_VIEW;
 

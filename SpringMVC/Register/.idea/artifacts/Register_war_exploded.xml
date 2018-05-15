@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="Spring_Register:war exploded">
-    <output-path>$PROJECT_DIR$/target/register-1.0-SNAPSHOT</output-path>
+  <artifact type="exploded-war" name="Register:war exploded">
+    <output-path>$PROJECT_DIR$/target/Register</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Spring_Register" />
+          <element id="module-output" name="Register" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
@@ -25,9 +25,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/register-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/Register/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="Spring_Register/web/Web" />
+      <element id="javaee-facet-resources" facet="Register/web/Web" />
     </root>
   </artifact>
 </component>

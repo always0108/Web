@@ -39,7 +39,7 @@ public class SpitterController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public ModelAndView student() {
+    public ModelAndView register() {
         return new ModelAndView("registerForm", "command", new Spitter());
     }
 

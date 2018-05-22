@@ -25,6 +25,7 @@ public class Httpclient {
     public static HttpClientContext context = null;
     public static CookieStore cookieStore = null;
     public static RequestConfig requestConfig = null;
+    public static int StatusCode;
 
     static {
         init();
@@ -68,6 +69,7 @@ public class Httpclient {
     private static String copyResponse2Str(CloseableHttpResponse response){
         try {
             int code = response.getStatusLine().getStatusCode();
+            StatusCode = code;
             //当请求的code返回值不是400的情况
             if((code == HttpStatus.SC_MOVED_TEMPORARILY )
                     || (code == HttpStatus.SC_MOVED_PERMANENTLY)
@@ -90,6 +92,7 @@ public class Httpclient {
             StringBuffer sb = new StringBuffer();
             while((line = reader.readLine()) != null){
                 sb.append(line);
+                sb.append("\n");
             }
             return sb.toString();
         } catch (Exception e) {
@@ -98,7 +101,7 @@ public class Httpclient {
         return null;
     }
 
-    /*发送post请求，不带参数 的post*/
+    /*发送post请求，不带参数的post*/
     public static String post(String url){
         return post(url, null);
     }
@@ -212,5 +215,9 @@ public class Httpclient {
             return EntityUtils.toString(entity);
         else
             return null;
+    }
+
+    public static int getStatusCode() {
+        return StatusCode;
     }
 }

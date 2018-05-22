@@ -5,11 +5,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sendJSON.model.ActionResult;
 import sendJSON.model.User;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.net.CookieStore;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,7 +37,6 @@ public class up_down {
     @RequestMapping(value = "/getcookie", method = RequestMethod.GET)
     @ResponseBody
     public void getcookie(HttpServletRequest request, HttpServletResponse response) {
-        request.getSession().setAttribute("user",new User("limeng","male"));
         Cookie cookie = new Cookie("name","okok");
         response.addCookie(cookie);
     }
@@ -58,8 +59,19 @@ public class up_down {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public void login(@ModelAttribute() User user) {
-        System.out.println("username:"+user.getUsername());
-        System.out.println("password:"+user.getPassword());
+    public ActionResult login(HttpServletRequest request, @ModelAttribute() User user) {
+        if(request.getSession(false) != null) {
+            //先注销
+            request.getSession(false).invalidate();
+        }
+        System.out.println("username:" + user.getUsername());
+        System.out.println("password:" + user.getPassword());
+        if (user.getUsername().equals("always0108") && user.getPassword().equals("123456")) {
+            request.getSession().setAttribute("user", user);
+            return new ActionResult(true,"身份验证成功");
+        } else {
+            return new ActionResult(false,"身份验证失败");
+        }
+
     }
 }
